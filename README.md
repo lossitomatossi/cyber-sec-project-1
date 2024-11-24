@@ -5,9 +5,9 @@ Installed according to [MOOC instructions](https://cybersecuritybase.mooc.fi/ins
 python3 -m pip install django "selenium<4" "urllib3<2" beautifulsoup4 requests
 ```
 
-FLAW 1:
-exact source link pinpointing flaw 1...
-description of flaw 1...
+FLAW 1: A1:2017-Injection
+[exact source link pinpointing flaw 1...](https://owasp.org/www-project-top-ten/2017/A1_2017-Injection)
+
 how to fix it...
 
 FLAW 2:
