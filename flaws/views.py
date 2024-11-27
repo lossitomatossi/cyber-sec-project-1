@@ -62,6 +62,27 @@ def login(request):
 
     return render(request, 'login.html')
 
+#from django.contrib.auth import authenticate, login
+#def login(request):
+#    if request.method == 'POST':
+#        username = request.POST['username']
+#        password = request.POST['password']
+#
+#        # Authenticate the user using Django's authenticate function
+#        user = authenticate(request, username=username, password=password)
+#
+#        if user is not None:
+#            # If user is authenticated, log them in (this handles session management)
+#            login(request, user)
+#
+#            # Optionally, set a custom message or redirect
+#            messages.success(request, "Login successful!")
+#            return redirect('flaws:index')  # Redirect to the index page or dashboard
+#        else:
+#            messages.error(request, "Invalid username or password.")
+#    
+#    return render(request, 'login.html')
+
 def logout(request):
     response = HttpResponse('Logged out successfully!')
     response.delete_cookie('session_token')
