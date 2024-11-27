@@ -1,8 +1,8 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .forms import UserRegistrationForm
 from django.contrib import messages
-from .models import User
+from .models import User, Pet
 import hashlib
 import time
 
@@ -87,3 +87,9 @@ def logout(request):
     response = HttpResponse('Logged out successfully!')
     response.delete_cookie('session_token')
     return redirect('flaws:login')
+
+def user_pets(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    print("user id is", user_id)
+    pets = Pet.objects.filter(owner=user)
+    return render(request, 'user_pets.html', {'user': user, 'pets': pets})

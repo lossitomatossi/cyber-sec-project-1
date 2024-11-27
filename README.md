@@ -12,9 +12,14 @@ and then you can run the program with the command
 python manage.py runserver
 ```
 
-For testing, the following users already exist in the form `username; password; session_token`
-user; user; user
-admin; admin; admin
+For testing, the following users already exist in the app
+`id  username   password    session_token`
+10  user	user	user
+9	admin	admin	admin
+
+The admin panel is open in /admin with the username admin and password admin.
+
+Both the admin and the user have pets associated to the accounts. The relevant pages are /flaws/id/pets
 
 FLAW : A3:2017-Sensitive Data Exposure
 
@@ -28,6 +33,17 @@ We are persisting user session as a plaintext value in the database and storing 
 
 How to fix: Use djangos authenticate and login functions to abstract session management and login functionality.
 
+
+FLAW A6:2017-Security Misconfiguration:
+
+Since the website was created with django, there is an admin panel that was not disabled. The admin panel can be accessed by anyone with access to the website, and since the admin uses these as their identifiers:
+username: admin
+email: admin@example.com
+password: admin
+
+It is reasonable that a user would attempt to login as "admin; admin", in which case they would get access to everything.
+
+How to fix: Firstly, never use a superuser account such as admin with the password admin. At minimum, the password should be a randomly generated one, and preferrably tied to some central authentication backend. Also, for a live server, we would disable the django admin backend from (mysite\urls.py) or at least limit access to it behind a firewall. We should not document the admin credentials in plaintext in the README.md either...
 
 FLAW 1: A1:2017-Injection
 [exact source link pinpointing flaw 1...](https://owasp.org/www-project-top-ten/2017/A1_2017-Injection)
