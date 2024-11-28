@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flaws site</title>
+</head>
+<body>
+    <h1>Welcome to flaws, user: {{ user.username }}!</h1>
+    <p> Your pets can be found in: <a href="{% url 'flaws:user_pets' user.id %}">Pets listing</a></p>
+    <p>Don't have an account? <a href="{% url 'flaws:register' %}">Register here</a></p>
+</body>
+</html>

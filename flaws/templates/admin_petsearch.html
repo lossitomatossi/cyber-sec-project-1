@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin pet search</title>
+</head>
+<body>
+    <h1>Search for pets by user</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="owner_id">Username</label>
+        <input type="text" id="owner_id" name="owner_id">
+
+        <button type="submit">Login</button>
+    </form>
+    {% if pet_list %}
+        <p>Below you can see all the pets for user {{ search_id }}</p>
+        <ul>
+    {% for pet in pet_list %}
+        <li>{{ pet }}</li>
+    {% endfor %}
+    </ul>
+    {% else %}
+        <p>No pets are available or search is empty.</p>
+    {% endif %}
+</body>
+</html>

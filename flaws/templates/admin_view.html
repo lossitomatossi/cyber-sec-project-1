@@ -1,0 +1,11 @@
+{% if user_list %}
+    <h1>Welcome to the admin view, user {{ user.username }}!</h1>
+    <p>Below you can see all the users</p>
+    <ul>
+    {% for user in user_list %}
+        <li>{{ user.username }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Users are available.</p>
+{% endif %}
